@@ -1,9 +1,19 @@
-import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import { effects } from './effects/index';
+import * as reducers from './reducers';
+import { ActionReducerMap, State, StoreModule } from '@ngrx/store';
+import { AppState } from './reducers';
 
+import { BrowserModule } from '@angular/platform-browser';
+import { InjectionToken, NgModule } from '@angular/core';
 import { AppRoutingModule } from './app-routing.module';
-import { AppComponent } from './app.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { EffectsModule } from '@ngrx/effects';
+
+import { AppComponent } from './app.component';
+
+export const reducerToken = new InjectionToken<
+  ActionReducerMap<State<AppState>>
+>('Registered Reducers');
 
 @NgModule({
   declarations: [
@@ -12,9 +22,13 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    NgbModule
+    NgbModule,
+    StoreModule.forRoot(reducerToken),
+    EffectsModule.forRoot(effects),
   ],
-  providers: [],
+  providers: [
+    { provide: reducerToken, useValue: reducers },
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

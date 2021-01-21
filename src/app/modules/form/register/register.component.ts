@@ -1,4 +1,10 @@
+import { selectStateLoading } from './../../../selectors/state.selectors';
+import { AppState } from './../../../reducers/index';
 import { Component, OnInit } from '@angular/core';
+import { Observable } from 'rxjs';
+import { Store } from '@ngrx/store';
+import { MAKE_A_RECORD, SET_LOADING } from 'src/app/actions';
+import { Record } from 'src/interfaces/record.interface';
 
 @Component({
   selector: 'app-register',
@@ -7,7 +13,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class RegisterComponent implements OnInit {
 
-  constructor() { }
+  loadingState$: Observable<boolean> = this.store.select(
+    selectStateLoading
+  );
+
+  constructor(private store: Store<AppState>) {
+  }
 
   ngOnInit(): void {
   }
