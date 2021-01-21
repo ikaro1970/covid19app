@@ -3,8 +3,8 @@ import { SET_LOADING } from '../actions/state.actions';
 
 const loadingActionsReducerState = createReducer(
   false,
-  on(SET_LOADING, (state, { newState }) => {
-    return newState;
+  on(SET_LOADING, (state, { payload }) => {
+    return payload;
   })
 );
 export function applicationLoadingState(

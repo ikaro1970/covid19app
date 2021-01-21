@@ -16,11 +16,18 @@ export class RegisterComponent implements OnInit {
   loadingState$: Observable<boolean> = this.store.select(
     selectStateLoading
   );
+  currentRecord: Record;
 
   constructor(private store: Store<AppState>) {
+    this.currentRecord = {
+      documentId: 8231283,
+      fever: 30
+    };
   }
 
   ngOnInit(): void {
+    this.store.dispatch(SET_LOADING({ payload: true }));
+    this.store.dispatch(MAKE_A_RECORD({ payload: this.currentRecord }));
   }
 
 }

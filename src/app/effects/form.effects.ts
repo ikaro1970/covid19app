@@ -1,29 +1,30 @@
+import { SERVICES_RESPONSES } from './../shared/labels/services-responses';
 import { FormService } from './../services/form.service';
 import { Injectable } from '@angular/core';
 import { Actions, Effect, ofType } from '@ngrx/effects';
 import { of } from 'rxjs';
 import { catchError, switchMap } from 'rxjs/operators';
-import { MAKE_A_RECORD, SET_LOADING } from '../actions';
+import { INCORRECT_RECORDING, MAKE_A_RECORD, SET_LOADING, SUCCESSFUL_RECORDING } from '../actions';
 
 @Injectable()
 export class FormEffects {
   constructor(
     private actions$: Actions,
     private formService: FormService
-  ) {}
+  ) { }
 
   @Effect()
   makeARegister$ = this.actions$.pipe(
     ofType<any>(MAKE_A_RECORD),
     switchMap(({ payload }) =>
       this.formService.makeARegister(payload).pipe(
-        switchMap(res =>
-          of(SET_LOADING({ newState: false }))
+        switchMap(() =>
+          of(SET_LOADING({ payload: false }), SUCCESSFUL_RECORDING({ payload: SERVICES_RESPONSES.correctResponse }))
         ),
-        catchError((err) => of(
-          console.error(err)
+        catchError(() => of(
+          INCORRECT_RECORDING({ payload: SERVICES_RESPONSES.incorrectResponse })
         ))
       )
     )
-  )
+  );
 }

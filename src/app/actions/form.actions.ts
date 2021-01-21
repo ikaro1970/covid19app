@@ -3,15 +3,15 @@ import { Record } from '../../interfaces/record.interface';
 
 export const MAKE_A_RECORD = createAction(
   '[Form Actions] MAKE_A_RECORD',
-  props<{ register: Record }>()
+  props<{ payload: Record }>()
 );
 
 export const SUCCESSFUL_RECORDING = createAction(
   '[Form Actions] SUCCESSFUL_RECORDING',
-  props<{ register: string }>()
+  props<{ payload: string }>()
 );
 
 export const INCORRECT_RECORDING = createAction(
-  '[Form Actions] SUCCESSFUL_RECORDING',
-  props<{ register: string }>()
+  '[Form Actions] INCORRECT_RECORDING',
+  props<{ payload: string }>()
 );

@@ -1,0 +1,11 @@
+{
+  "targets": {
+    "covid19app-36110": {
+      "hosting": {
+        "covid19App": [
+          "covid19app-36110"
+        ]
+      }
+    }
+  }
+}
