@@ -1,3 +1,4 @@
+import { LayoutComponent } from './shared/commons/layout/layout.component';
 import { FULL_ROUTES } from './shared/routes/full.routes';
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
@@ -8,7 +9,7 @@ const routes: Routes = [
     redirectTo: 'form/register',
     pathMatch: 'full'
   },
-  { path: '', children: FULL_ROUTES },
+  { path: '', component: LayoutComponent, children: FULL_ROUTES },
 ];
 
 @NgModule({

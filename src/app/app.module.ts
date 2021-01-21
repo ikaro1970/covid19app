@@ -1,5 +1,9 @@
+import { MenuComponent } from './shared/commons/menu/menu.component';
+import { FooterComponent } from './shared/commons/footer/footer.component';
+import { HeaderComponent } from './shared/commons/header/header.component';
 // Environment
 import { environmentFire } from './../environments/environment.fire';
+import { environment } from 'src/environments/environment';
 
 // Library
 import { effects } from './effects/index';
@@ -18,11 +22,17 @@ import { StoreModule } from '@ngrx/store';
 
 // Components
 import { AppComponent } from './app.component';
-import { environment } from 'src/environments/environment';
+import { LayoutComponent } from './shared/commons/layout/layout.component';
+import { LoaderComponent } from './shared/commons/loader/loader.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    LayoutComponent,
+    HeaderComponent,
+    FooterComponent,
+    MenuComponent,
+    LoaderComponent
   ],
   imports: [
     BrowserModule,
