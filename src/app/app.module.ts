@@ -1,4 +1,3 @@
-import { MenuComponent } from './shared/commons/menu/menu.component';
 import { FooterComponent } from './shared/commons/footer/footer.component';
 import { HeaderComponent } from './shared/commons/header/header.component';
 // Environment
@@ -31,7 +30,6 @@ import { LoaderComponent } from './shared/commons/loader/loader.component';
     LayoutComponent,
     HeaderComponent,
     FooterComponent,
-    MenuComponent,
     LoaderComponent
   ],
   imports: [

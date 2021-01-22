@@ -1,2 +1,19 @@
-<p>home works!</p>
-{{possibleCases$ | async | json}}
+<div class="container">
+  <p class="title">{{dashboardLabels.title}} <strong>{{dashboardLabels.strongTitle}}</strong></p>
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th scope="col">{{recordLabels.recordTitle1}}</th>
+        <th scope="col">{{recordLabels.recordTitle2}}</th>
+        <th scope="col">{{recordLabels.recordTitle3}}</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let record of possibleCases$ | async; index as i">
+        <th scope="row">{{ i + 1 }}</th>
+        <td>{{ record.documentId }}</td>
+        <td>{{ record.fever | number }}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>

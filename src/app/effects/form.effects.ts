@@ -1,4 +1,4 @@
-import { SERVICES_RESPONSES } from './../shared/labels/services-responses';
+import { servicesLabels } from '../shared/labels/services.labels';
 import { FormService } from './../services/form.service';
 import { Injectable } from '@angular/core';
 import { Actions, Effect, ofType } from '@ngrx/effects';
@@ -19,10 +19,10 @@ export class FormEffects {
     switchMap(({ payload }) =>
       this.formService.makeARegister(payload).pipe(
         switchMap(() =>
-          of(SET_LOADING({ payload: false }), SUCCESSFUL_RECORDING({ payload: SERVICES_RESPONSES.correctResponse }))
+          of(SET_LOADING({ payload: false }), SUCCESSFUL_RECORDING({ payload: servicesLabels.correctResponse }))
         ),
         catchError(() => of(
-          INCORRECT_RECORDING({ payload: SERVICES_RESPONSES.incorrectResponse })
+          INCORRECT_RECORDING({ payload: servicesLabels.incorrectResponse })
         ))
       )
     )

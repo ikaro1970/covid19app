@@ -1,1 +1,26 @@
-<p>{{loadingState$ | async}}</p>
+<div class="container app-register">
+  <form [formGroup]="currentRecordForm" (ngSubmit)="submitForm()">
+    <div class="form-group">
+      <label for="documentId">{{recordLabels.recordTitle2}}</label>
+      <input type="number" class="form-control" id="documentId" aria-describedby="documentIdHelp"
+        [placeholder]="recordLabels.recordTitle2" formControlName="documentId"
+        [ngClass]="documentId.invalid && (documentId.dirty || documentId.touched) ? 'is-invalid': (documentId.dirty || documentId.touched) ? 'is-valid': ''">
+      <small id="documentIdHelp" class="form-text text-muted">{{registerLabels.documentHelp}}</small>
+      <div *ngIf="documentId.invalid && (documentId.dirty || documentId.touched)"
+        [ngClass]="documentId.invalid && (documentId.dirty || documentId.touched) ? 'is-invalid': (documentId.dirty || documentId.touched) ? 'is-valid': ''">
+        {{registerLabels.documentIdRequiredLabel}}
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="fever">{{recordLabels.recordTitle3}}</label>
+      <input type="number" class="form-control" id="fever" [placeholder]="recordLabels.recordTitle3"
+        formControlName="fever"
+        [ngClass]="fever.invalid && (fever.dirty || fever.touched) ? 'is-invalid': (fever.dirty || fever.touched) ? 'is-valid': ''">
+      <div *ngIf="fever.invalid && (fever.dirty || fever.touched)"
+        [ngClass]="fever.invalid && (fever.dirty || fever.touched) ? 'is-invalid': (fever.dirty || fever.touched) ? 'is-valid': ''">
+        {{registerLabels.feverRequiredLabel}}
+      </div>
+    </div>
+    <button type="submit" class="btn btn-primary" [disabled]="currentRecordForm.invalid">{{registerLabels.buttonLabel}}</button>
+  </form>
+</div>

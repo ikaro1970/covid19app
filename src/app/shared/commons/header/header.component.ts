@@ -1,3 +1,5 @@
+import { commonsLabels } from './../../labels/commons.labels';
+import { menuLabels } from './../../labels/menu.labels';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -6,6 +8,10 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./header.component.scss']
 })
 export class HeaderComponent implements OnInit {
+
+  menuLabels = menuLabels;
+  commonsLabels = commonsLabels;
+  isNavbarCollapsed = true;
 
   constructor() { }
 

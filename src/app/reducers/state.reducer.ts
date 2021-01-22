@@ -1,9 +1,9 @@
 import { Action, createReducer, on } from '@ngrx/store';
-import { SET_LOADING } from '../actions/state.actions';
+import { SET_LOADING_SUCCESS } from '../actions/application-state.actions';
 
 const loadingActionsReducerState = createReducer(
   false,
-  on(SET_LOADING, (state, { payload }) => {
+  on(SET_LOADING_SUCCESS, (state, { payload }) => {
     return payload;
   })
 );
