@@ -1,7 +1,6 @@
-import { delay, last, map, skipLast, take, takeLast } from 'rxjs/operators';
+import { map } from 'rxjs/operators';
 import { selectMakeRecordResponseState } from 'src/app/selectors/form.selectors';
 import { registerLabels } from 'src/app/shared/labels/register.labels';
-import { selectStateLoading } from 'src/app/selectors/state.selectors';
 import { AppState } from 'src/app/reducers/index';
 import { Component, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';

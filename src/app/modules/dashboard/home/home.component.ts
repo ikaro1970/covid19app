@@ -1,3 +1,4 @@
+import { selectGetPossibleErrorCasesState } from 'src/app/selectors/dashboard.selectors';
 import { selectGetPossibleCasesState } from 'src/app/selectors/dashboard.selectors';
 import { dashboardLabels } from 'src/app/shared/labels/dashboard.labels';
 import { AfterViewInit, Component, OnInit } from '@angular/core';
@@ -7,6 +8,8 @@ import { AppState } from 'src/app/reducers';
 import { GET_POSSIBLE_CASES, SET_LOADING } from 'src/app/actions';
 import { Record } from 'src/interfaces/record.interface';
 import { recordLabels } from 'src/app/shared/labels/record.labels';
+import Swal from 'sweetalert2';
+import { map } from 'rxjs/operators';
 
 @Component({
   selector: 'app-home',
@@ -30,6 +33,13 @@ export class HomeComponent implements OnInit, AfterViewInit {
   }
 
   ngOnInit(): void {
+    this.store.select(selectGetPossibleErrorCasesState).pipe(
+      map(responseState => {
+        if (responseState !== '') {
+          Swal.fire('Error', responseState, 'error');
+        }
+      })
+    ).subscribe();
   }
 
 }

@@ -6,4 +6,5 @@ export interface AppState {
   applicationLoadingState: any;
   makeRecordResponseState: any;
   getPossibleCasesState: any;
+  getPossibleCasesErrorState: any;
 }
