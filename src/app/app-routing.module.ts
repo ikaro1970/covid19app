@@ -6,7 +6,7 @@ import { Routes, RouterModule } from '@angular/router';
 const routes: Routes = [
   {
     path: '',
-    redirectTo: 'form/register',
+    redirectTo: 'dashboard/home',
     pathMatch: 'full'
   },
   { path: '', component: LayoutComponent, children: FULL_ROUTES },
